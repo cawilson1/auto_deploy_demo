@@ -31,6 +31,8 @@ jobs:
       - run: npm i
       - run: npm test
       - run: npm run build
+      
+      - name: scp
       - uses: appleboy/scp-action@master
         with:
           host: ec2-52-73-125-15.compute-1.amazonaws.com
