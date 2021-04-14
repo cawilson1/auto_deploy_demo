@@ -41,3 +41,13 @@ jobs:
       # Runs a single command using the runners shell
       - name: Create build dir
         run: npm run build
+        
+      - name: copy file via ssh key
+        uses: appleboy/scp-action@master
+        with:
+          host: ec2-52-73-125-15.compute-1.amazonaws.com
+          username: ubuntu
+          port: 22
+          key: ${{ secrets.SSH_SECRET_KEY }}
+          source: build/
+          target: "test"
